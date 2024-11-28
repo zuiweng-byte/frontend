@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>户型图生成</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- 新增的操作按钮区 -->
+        <div class="action-buttons">
+            <button onclick="showFileInput()">加载模型</button>
+            <button onclick="unloadModel()">卸载模型</button>
+            <button onclick="clearChat()">清空对话</button>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+            <!-- 聊天内容显示区 -->
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="请输入消息..." onkeydown="checkEnter(event)">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+
+        <div id="file-input-container" class="file-input-container">
+            <input type="text" id="file-path" placeholder="请输入文件路径...">
+            <button onclick="loadFile()">加载文件</button>
+        </div>
+
+        <div class="bottom-buttons">
+            <button onclick="showFeatureMessage('功能1')">功能1</button>
+            <button onclick="showFeatureMessage('功能2')">功能2</button>
+            <button onclick="showFeatureMessage('功能3')">功能3</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

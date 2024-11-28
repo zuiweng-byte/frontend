@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.chat-container {
+    background-color: white;
+    width: 400px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.action-buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.action-buttons button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+}
+
+.action-buttons button:hover {
+    background-color: #45a049;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.input-container button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.input-container button:hover {
+    background-color: #45a049;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.chat-box p {
+    margin: 0 0 10px;
+}
+
+.chat-box .user-message {
+    color: #4CAF50;
+    text-align: right;
+}
+
+.chat-box .bot-message {
+    color: #2196F3;
+    text-align: left;
+}
+
+.bottom-buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+.bottom-buttons button {
+    padding: 10px 15px;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    width: 30%;
+}
+
+.bottom-buttons button:hover {
+    background-color: #1976D2;
+}
+
+.file-input-container {
+    display: none;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.file-input-container input {
+    padding: 10px;
+    width: 80%;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.file-input-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.file-input-container button:hover {
+    background-color: #45a049;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
