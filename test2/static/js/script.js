@@ -88,7 +88,6 @@ function showFileInput() {
     fileInputContainer.style.display = "block";
 }
 
-// 加载文件
 function loadFile() {
     const filePath = document.getElementById("file-path").value.trim();
     if (filePath === "") {
@@ -96,17 +95,54 @@ function loadFile() {
         return;
     }
 
-    // 假设加载文件后会显示以下消息
+    // 发送文件路径到后端并获取执行结果
+    fetch('/execute-code', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ path: filePath })  // 修改参数名称为path
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');  // 检查响应状态
+        }
+        return response.json();  // 使用response.json()解析JSON响应
+    })
+    .then(data => {
+        if (data.error) {
+            throw new Error(data.error);  // 处理后端返回的错误信息
+        }
+        displayResult(data.image_path);  // 显示结果
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert(`无法执行代码：${error.message}`);  // 显示错误信息
+    });
+}
+
+// 显示执行结果
+function displayResult(imagePath) {
     const chatBox = document.getElementById("chat-box");
     const botMessage = document.createElement("p");
     botMessage.classList.add("bot-message");
-    botMessage.textContent = `文件加载成功：${filePath}`;
-    chatBox.appendChild(botMessage);
+    
+    // 创建图像元素并设置源路径
+    const imageElement = document.createElement("img");
+    imageElement.src = imagePath;
+    imageElement.alt = "执行结果图像";
+    imageElement.style.maxWidth = "100%";  // 确保图像不会超出聊天框
 
+    // 将图像元素添加到聊天框
+    chatBox.appendChild(botMessage);
+    chatBox.appendChild(imageElement);
+    chatBox.scrollTop = chatBox.scrollHeight;
+    
     // 清空路径输入框并隐藏
     document.getElementById("file-path").value = "";
     document.getElementById("file-input-container").style.display = "none";
 }
+
 
 // 示例：更改功能的响应提示
 function showFeatureMessage(feature) {
