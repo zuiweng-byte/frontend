@@ -88,7 +88,6 @@ function showFileInput() {
     fileInputContainer.style.display = "block";
 }
 
-// 加载文件
 function loadFile() {
     const filePath = document.getElementById("file-path").value.trim();
     if (filePath === "") {
@@ -96,17 +95,38 @@ function loadFile() {
         return;
     }
 
-    // 假设加载文件后会显示以下消息
+    // 发送文件路径到后端并获取执行结果
+    fetch('/execute-code', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ path: filePath })
+    })
+    .then(response => response.text())
+    .then(data => {
+        displayResult(data);  // 使用新函数显示结果
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("无法执行代码！");
+    });
+}
+
+// 显示执行结果
+function displayResult(result) {
     const chatBox = document.getElementById("chat-box");
     const botMessage = document.createElement("p");
     botMessage.classList.add("bot-message");
-    botMessage.textContent = `文件加载成功：${filePath}`;
+    botMessage.textContent = `执行结果：${result}`;
     chatBox.appendChild(botMessage);
-
+    chatBox.scrollTop = chatBox.scrollHeight;
+    
     // 清空路径输入框并隐藏
     document.getElementById("file-path").value = "";
     document.getElementById("file-input-container").style.display = "none";
 }
+
 
 // 示例：更改功能的响应提示
 function showFeatureMessage(feature) {
